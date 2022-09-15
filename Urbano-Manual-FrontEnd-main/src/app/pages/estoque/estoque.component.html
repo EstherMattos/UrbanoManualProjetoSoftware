@@ -1,0 +1,79 @@
+<app-card-default titulo="Estoque cadastrado">
+
+    <table mat-table [dataSource]="registros">
+
+        <ng-container matColumnDef="quantidade">
+            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+            <td mat-cell *matCellDef="let element; let i = index;"> 
+                <app-contador [quantidade]="element.quantidade"
+                              (emiteNovaQuantidade)="AlterarQuantidade($event, i)"></app-contador> 
+            </td>
+            <td mat-footer-cell *matFooterCellDef> <b>Total</b> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef> Descrição </th>
+          <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+          <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="valorUnitario">
+          <th mat-header-cell *matHeaderCellDef> Valor unitário </th>
+          <td mat-cell *matCellDef="let element"> {{element.valorUnitario}} </td>
+          <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="valorTotal">
+          <th mat-header-cell *matHeaderCellDef> Valor total </th>
+          <td mat-cell *matCellDef="let element; let i = index;"> {{SomaValorLinha(i)}} </td>
+          <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="btnRemover">
+          <th mat-header-cell *matHeaderCellDef> Remover </th>
+          <td mat-cell *matCellDef="let element; let i = index;"> 
+            <button mat-stroked-button 
+                    color="warn"
+                    (click)="RemoverProduto(element)">Remover</button>
+          </td>
+          <td mat-footer-cell *matFooterCellDef> <b> {{SomaTotal() | currency}} </b> </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+        <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+        <tr mat-footer-row *matFooterRowDef="colunas"></tr>
+
+    </table>
+</app-card-default>
+
+<app-card-default>
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-sm-6">
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Descrição</mat-label>
+        <input matInput [formControl]="descricaoProduto">
+      </mat-form-field>    
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Valor</mat-label>
+        <input type="number" matInput [formControl]="valorProduto">
+      </mat-form-field>
+    </div>
+
+    <div class="col-sm-2">
+        <button mat-button 
+                color="primary"
+                class="ml-auto"
+                (click)="AdicionarProduto()">Adicionar</button>
+    </div>
+  </div>
+</app-card-default>
+
+<app-crud-buttons [showDelete]="false"
+                  [showPost]="false"
+                  [showPut]="false"
+                  labelBotaoPut="Salvar estoque"
+                  labelBotaoAuxUm="Gerar conta"
+                  (OnClickButtonAuxUm)="GerarConta()">
+</app-crud-buttons>

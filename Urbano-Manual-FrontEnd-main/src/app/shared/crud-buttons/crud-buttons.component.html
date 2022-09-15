@@ -1,0 +1,32 @@
+<mat-card class="botoes-crud"
+          *ngIf="showPost || showDelete || showAuxUm">
+
+    <button *ngIf="showAuxUm"
+            [disabled]="disableAuxUm" 
+            class="botao-auxUm"
+            mat-flat-button 
+            color="accent" 
+            (click)="emitClickButtonAuxUm($event)">{{labelBotaoAuxUm}}</button>
+    
+    <button *ngIf="showPost"
+            [disabled]="disablePost" 
+            class="botao-post" 
+            mat-flat-button 
+            color="primary" 
+            (click)="emitClickButtonPost($event)">{{labelBotaoPost}}</button>
+
+    <button *ngIf="showPut"
+            [disabled]="disablePut" 
+            class="botao-Put" 
+            mat-flat-button 
+            color="primary" 
+            (click)="emitClickButtonPut()">{{labelBotaoPut}}</button>
+    
+    <button *ngIf="showDelete"
+            [disabled]="disableDelete" 
+            class="botao-delete"
+            mat-flat-button 
+            color="warn" 
+            (click)="emitClickButtonDelete($event)">Excluir</button>
+            
+</mat-card>

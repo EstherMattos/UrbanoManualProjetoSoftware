@@ -1,0 +1,29 @@
+<table mat-table [dataSource]="registros" style="width: 100%;">
+
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef> Descrição </th>
+      <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+      <td mat-footer-cell *matFooterCellDef> Total: </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="valor">
+      <th mat-header-cell *matHeaderCellDef> Valor </th>
+      <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+      <td mat-footer-cell *matFooterCellDef> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="btnRemover">
+      <th mat-header-cell *matHeaderCellDef> Remover </th>
+      <td mat-cell *matCellDef="let element; let i = index;"> 
+        <button mat-stroked-button 
+                (click)="RemoverConta(i)"
+                color="warn">Remover</button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef> <b> {{SomaTotal() | currency}} </b> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+    <tr mat-footer-row *matFooterRowDef="colunas"></tr>
+
+</table>

@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" style="display: flex; justify-content:space-between">
+
+  <div>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon (click)="MudarEstado()">menu</mat-icon>
+    </button>
+    <span>Urbano Manual</span>
+  </div>
+
+  <div>
+    <app-select-residencia></app-select-residencia>
+    <app-options></app-options>
+  </div>
+</mat-toolbar>
+

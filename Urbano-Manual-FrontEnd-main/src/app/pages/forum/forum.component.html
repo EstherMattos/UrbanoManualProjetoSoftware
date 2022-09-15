@@ -1,0 +1,20 @@
+<mat-card class="card">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Ordenação</mat-label>
+        <mat-select (selectionChange)="MudarOrdenacao($event)">
+          <mat-option *ngFor="let visualizacao of ListaVisualizacao" [value]="visualizacao.Valor">{{visualizacao.Descricao}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+
+    <button mat-flat-button 
+            color="primary" 
+            (click)="AdicionarComentario()" 
+            style="margin-left: auto;">Adicionar post</button>
+</mat-card>
+
+<app-card-comentario *ngFor="let comentario of Comentarios" 
+                     [Comentario]="comentario"
+                     (emiteAlterarComentario)="AlterarComentario($event)"
+                     (emiteDeletarComentario)="Delete($event)"></app-card-comentario>

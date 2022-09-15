@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Criar cômodo</h2>
+
+<mat-dialog-content class="mat-typography">
+    <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Tipo de cômodo</mat-label>
+        <mat-select [formControl]="classificacaoMovel">
+            <mat-option *ngFor="let classificacao of ClassificacaoMovel" [value]="classificacao.Valor">{{classificacao.Descricao}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+       
+    <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Tamanho</mat-label>
+        <input matInput [formControl]="tamanho" type="text">
+    </mat-form-field> 
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="Cadastrar()">Feito!</button>
+</mat-dialog-actions>

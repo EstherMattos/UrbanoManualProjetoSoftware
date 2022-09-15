@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-sm-6">
+        <app-card-default titulo="Conta fixas">
+            <app-tabela-conta [registros]="ContasFixas" (emiteRemocao)="Delete($event, 'FIXA')"></app-tabela-conta>
+        </app-card-default>
+    </div>
+    <div class="col-sm-6">
+        <app-card-default titulo="Contas variáveis">
+            <app-tabela-conta [registros]="ContasVariaveis" (emiteRemocao)="Delete($event, 'VARIAVEL')"></app-tabela-conta>
+        </app-card-default>
+    </div>
+</div>
+
+<app-card-default titulo="Adicionar conta">
+
+    <form [formGroup]="formulario">
+
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="Descricao">
+        </mat-form-field> 
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-sm-6">
+              <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>Valor</mat-label>
+                <input type="number" matInput formControlName="Valor">
+              </mat-form-field>
+            </div>
+    
+            <div class="col-sm-6">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Classificação da conta</mat-label>
+                    <mat-select formControlName="TipoConta">
+                        <mat-option *ngFor="let conta of TiposConta" [value]="conta.Valor">{{conta.Descricao}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+
+        <div class="col-sm-2">
+            <button mat-button 
+                    color="primary"
+                    class="ml-auto"
+                    (click)="Post()"
+                   >Adicionar</button>
+        </div>
+
+</app-card-default> 

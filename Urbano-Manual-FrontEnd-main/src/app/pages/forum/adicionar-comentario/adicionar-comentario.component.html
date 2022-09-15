@@ -1,0 +1,18 @@
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="formulario">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Titulo</mat-label>
+      <input matInput formControlName="titulo">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Mensagem</mat-label>
+      <textarea matInput formControlName="mensagem"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="Comentar()">Enviar post!!</button>
+</mat-dialog-actions>

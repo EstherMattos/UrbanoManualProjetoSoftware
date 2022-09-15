@@ -1,0 +1,117 @@
+<mat-card class="divPrincipal" style="display:flex; justify-content:space-between">
+  <div><h2>Cômodos</h2></div>
+  <button mat-raised-button 
+          color="primary"
+          (click)="AbrirCadastroComodo()">Adicionar cômodo</button>
+</mat-card>
+
+
+<div class="row divPrincipal">
+
+    <div class="col-sm-4">
+        <mat-selection-list #shoes 
+                            [multiple]="false"
+                            (selectionChange)="SelecionarComodo($event)">
+            <mat-list-option *ngFor="let shoe of comodos" [value]="shoe">
+              {{ClassificacaoEnumToString(shoe.classificacaoMovel)}}
+            </mat-list-option>
+        </mat-selection-list>       
+
+    </div>
+      
+    
+    <div class="col-sm-8" *ngIf="comodoSelecionado">
+        <mat-card style="margin-left: 15px; margin-right: 15px">
+
+          <form [formGroup]="formulario">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Tipo de cômodo</mat-label>
+              <mat-select formControlName="classificacaoMovel">
+                  <mat-option *ngFor="let classificacao of ClassificacaoMovel" [value]="classificacao.Valor">{{classificacao.Descricao}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="row">
+
+              <div class="col-sm-6">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                  <mat-label>Tamanho</mat-label>
+                  <input matInput formControlName="tamanho" type="text">
+                </mat-form-field> 
+              </div>
+
+              <div class="col-sm-6">
+                <mat-slide-toggle formControlName="limpeza"
+                                  style="margin-top: 15px;"
+                                  class="example-margin"> Cômodo limpo </mat-slide-toggle>
+              </div>
+
+              
+            </div>
+
+          </form>
+
+            
+            <table mat-table [dataSource]="comodoSelecionado.moveis ? comodoSelecionado.moveis : []" style="width: 100%">
+
+                <ng-container matColumnDef="descricao">
+                  <th mat-header-cell *matHeaderCellDef> Descrição </th>
+                  <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="quantidade">
+                  <th mat-header-cell *matHeaderCellDef> Qtd </th>
+                  <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="remover">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element; let i = index;">  
+                    <button mat-icon-button 
+                            color="warn"
+                            (click)="RemoverMovel(element)">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+                            
+                <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+                <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+            </table>
+        </mat-card>
+
+        <mat-card style="margin-left: 15px; margin-right: 15px; margin-top: 20px;">
+
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>Descrição</mat-label>
+                <input matInput [formControl]="descricaoMovel">
+              </mat-form-field>    
+            </div>
+            <div class="col-sm-2">
+              <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>Quantidade</mat-label>
+                <input matInput [formControl]="quantidadeMovel" type="number">
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+
+              <button mat-flat-button 
+                      color="accent"
+                      class="ml-auto"
+                      style="width: 100%; height: 50px;"
+                      (click)="AdicionarMovel()">Adicionar Movel</button>             
+            </div>
+          </div>    
+        </mat-card>
+
+        <app-crud-buttons [showAuxUm]="false"
+                          [showPost]="false"
+                          labelBotaoPut="Alterar"
+                          (OnClickButtonPut)="AlterarComodo()"
+                          (OnClickButtonDelete)="RemoverComodo()">
+        </app-crud-buttons>
+    </div>
+
+</div>

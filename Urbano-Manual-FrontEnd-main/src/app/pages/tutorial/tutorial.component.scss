@@ -1,0 +1,35 @@
+
+h1{
+  margin: 2rem 5rem;
+  font-size: 30px;
+}
+h3{
+  margin: 1rem 5rem;
+  font-size: 16px;
+}
+.example-tree{
+  margin: 0 5rem;
+
+  .example-tree-invisible {
+    display: none;
+  }
+
+  ul, li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+
+  mat-nested-tree-node div[role=group] {
+    padding-left: 40px;
+  }
+
+  div[role=group] > .mat-tree-node {
+    padding-left: 40px;
+    a{
+      text-decoration: none;
+    }
+  }
+}
+
+

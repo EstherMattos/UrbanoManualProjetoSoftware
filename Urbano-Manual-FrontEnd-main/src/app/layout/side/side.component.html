@@ -1,0 +1,14 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer [opened]="estado" class="example-sidenav" mode="side">
+
+      <mat-selection-list #shoes [multiple]="false">
+        <mat-list-option routerLink={{item.Link}} *ngFor="let item of ItemMenu" [value]="item">
+          {{item.Descricao}}
+        </mat-list-option>
+      </mat-selection-list>
+
+    </mat-drawer>
+  
+    <ng-content></ng-content>
+  
+</mat-drawer-container>

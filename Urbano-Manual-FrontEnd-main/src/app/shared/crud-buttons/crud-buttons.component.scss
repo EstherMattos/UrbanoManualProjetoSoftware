@@ -1,0 +1,51 @@
+.botoes-crud{
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px
+}
+
+.botao-delete{
+    margin-left: 10px;
+}
+
+.botao-post{
+    margin-left: 10px;
+}
+
+.botao-put{
+    margin-left: 10px;
+}
+
+.botao-auxUm{
+    margin-right: 10px;
+}
+
+
+@media (max-width: 576px) {
+
+    .botoes-crud{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .botao-auxUm{
+        margin-top: 10px;
+        margin-left: 0;
+    }
+    
+    .botao-delete{
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .botao-post{
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .botao-put{
+        margin-top: 10px;
+        margin-left: 0;
+    }
+    
+  }

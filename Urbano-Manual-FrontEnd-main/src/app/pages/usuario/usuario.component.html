@@ -1,0 +1,44 @@
+<app-card-default titulo="Configurações de usuário">
+
+    <form [formGroup]="formulario">
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput formControlName="nome">
+        </mat-form-field>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+              <mat-label>CPF</mat-label>
+              <input type="text" matInput formControlName="cpf">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+                <mat-label>Senha</mat-label>
+                <input type="password" matInput formControlName="senha">
+              </mat-form-field>
+          </div>
+        </div>
+
+      </form>
+
+</app-card-default>
+
+<app-card-default>
+  <app-cadastrar-residencia (emitirNovoEndereco)="AdicionarEndereco($event)"
+                            [enderecos]="ListaEnderecos"></app-cadastrar-residencia>
+</app-card-default>
+
+<app-card-default>
+  <app-cadastrar-renda (emitirNovaRenda)="AdicionarRenda($event)"
+                       [rendas]="ListaRendas"></app-cadastrar-renda>
+</app-card-default>
+
+<app-crud-buttons [showAuxUm]="false"
+                  [showPost]="false"
+                  labelBotaoPut="Alterar"
+                  (OnClickButtonPut)="put()"
+                  (OnClickButtonDelete)="delete()">
+</app-crud-buttons>

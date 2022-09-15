@@ -1,0 +1,69 @@
+<mat-toolbar color="primary">
+    <span>Urbano Manual</span>
+</mat-toolbar>
+
+<app-card-default titulo="Cadastro">
+
+  <mat-horizontal-stepper>
+    <mat-step label="Dados pessoais" state="phone">
+
+      <form [formGroup]="formulario">
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput formControlName="nome">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput formControlName="senha">
+        </mat-form-field>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+              <mat-label>CPF</mat-label>
+              <input type="text" matInput formControlName="cpf" [value]="formulario.get('cpf').value | cpf">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+              <mat-label>Idade</mat-label>
+              <input type="text" matInput formControlName="idade">
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      
+      <div>
+        <button mat-button matStepperNext>Próximo</button>
+      </div>
+
+    </mat-step>
+
+    <mat-step label="Residencia" state="chat">
+      
+      <app-cadastrar-residencia (emitirNovoEndereco)="AdicionarEndereco($event)"></app-cadastrar-residencia>
+
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext>Próximo</button>
+      </div>
+
+    </mat-step>
+
+    <mat-step label="Renda">
+      <app-cadastrar-renda (emitirNovaRenda)="AdicionarRenda($event)"></app-cadastrar-renda>
+    </mat-step>
+    
+  </mat-horizontal-stepper>
+
+</app-card-default>
+
+<app-crud-buttons [showDelete]="false"
+                  [showAuxUm]="false"
+                  [showPut]="false"
+                  labelBotaoPost="Finalizar!"
+                  [disablePost]="!ValidaFormulario()"
+                  (OnClickButtonPost)="Cadastrar()">
+</app-crud-buttons>

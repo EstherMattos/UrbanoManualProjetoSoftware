@@ -1,0 +1,17 @@
+.botao {
+    width: 30px;
+    height: 30px;
+    line-height: 14px;
+    font-size: 14px;
+
+    &::ng-deep .mat-button-wrapper{
+        line-height: 14px;
+        padding: 0;
+
+         .mat-icon {
+             font-size: 14px;
+             padding-right: 4px;
+             padding-top: 4px;
+         }
+   }
+}
