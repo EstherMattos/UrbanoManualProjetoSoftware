@@ -1,13 +1,9 @@
-<table mat-table [dataSource]="enderecos" style="width: 100%;">
-      
-  <ng-container matColumnDef="Endereco">
-    <th mat-header-cell *matHeaderCellDef> Endereço </th>
-    <td mat-cell *matCellDef="let valor"> {{valor}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="['Endereco']"></tr>
-  <tr mat-row *matRowDef="let row; columns: ['Endereco'];"></tr>
-</table>
+<form [formGroup]="formulario" *ngFor="let endereco of enderecos">
+  <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+    <mat-label>Endereço</mat-label>
+    <input type="text" matInput [value]="endereco" formControlName="enderecoNome">
+  </mat-form-field>
+</form>
 
 <div class="row" style="margin-top: 20px;">
     <div class="col-sm-10">
