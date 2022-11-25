@@ -16,5 +16,7 @@ export enum Rotas{
     Conta = '/pages/conta',
     Calculadora = '/pages/calculadora',
     Forum = '/pages/forum',
-    Tutorial = '/pages/tutorial'
+    Tutorial = '/pages/tutorial',
+    Relatorio = '/pages/relatorio',
+    Calendario = '/pages/calendario'
 }

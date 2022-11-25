@@ -31,9 +31,11 @@ import { AdicionarComentarioComponent } from './forum/adicionar-comentario/adici
 import { CardComentarioComponent } from './forum/card-comentario/card-comentario.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
+import { CalendarioComponent } from './calendario/calendario.component';
 
 @NgModule({
   declarations: [
+    CalendarioComponent,
     RelatorioComponent,
     PagesComponent, 
     ComodoComponent, 
@@ -42,7 +44,12 @@ import { RelatorioComponent } from './relatorio/relatorio.component';
     CalculadoraComponent, 
     ForumComponent, 
     TutorialComponent, 
-    UsuarioComponent, TabelaContaComponent, CriarComodoComponent, AdicionarComentarioComponent, CardComentarioComponent, PrincipalComponent
+    UsuarioComponent, 
+    TabelaContaComponent, 
+    CriarComodoComponent, 
+    AdicionarComentarioComponent, 
+    CardComentarioComponent,
+    PrincipalComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +75,8 @@ import { RelatorioComponent } from './relatorio/relatorio.component';
   ],
   exports: [
     ContaComponent,
-    EstoqueComponent
+    EstoqueComponent,
+    CalendarioComponent
   ]
 })
 export class PagesModule { }

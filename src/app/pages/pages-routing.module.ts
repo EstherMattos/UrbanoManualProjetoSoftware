@@ -10,6 +10,7 @@ import { PrincipalComponent } from './principal/principal.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
+import { CalendarioComponent } from './calendario/calendario.component';
 
 const routes: Routes = [
     {
@@ -51,6 +52,10 @@ const routes: Routes = [
           {
             path: 'relatorio',
             component: RelatorioComponent,
+          },
+          {
+            path: 'calendario',
+            component: CalendarioComponent,
           }
         ]
     }

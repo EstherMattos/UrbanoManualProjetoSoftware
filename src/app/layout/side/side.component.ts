@@ -30,6 +30,14 @@ export class SideComponent implements OnInit {
       Descricao: 'Tutoriais',
       Link: Rotas.Tutorial
     },
+    {
+      Descricao: 'Relátorio',
+      Link: Rotas.Relatorio
+    },
+    {
+      Descricao: 'Calendário',
+      Link: Rotas.Calendario
+    },
   ];
 
   @Input('estado') estado: boolean
