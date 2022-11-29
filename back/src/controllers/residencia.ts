@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { generateReport } from '../services/reportGenerator';
 import ResidenciaRepository from '../repository/residencia';
+import DespesasReportGenerator from '../services/reportGenerator';
 export const ResidenciaController = {
   async create(request: Request, response: Response) {
     try {
@@ -40,11 +40,13 @@ export const ResidenciaController = {
         parseInt(residencia_id),
         true
       );
-      const despesas = Object.values(residenciaData?.despesas!).map((c) =>
-        Object.values(c)
+
+      const reportGenerator = new DespesasReportGenerator(
+        parseInt(residencia_id),
+        residenciaData!.despesas!
       );
-      await generateReport(residenciaData!.id, despesas);
-      return response.status(200).json('result');
+      await reportGenerator.generateReport(response);
+      // return response.status(200).json('result');
     } catch (err) {
       console.log('Residencia getById failed: ' + err);
       return response.status(500).json({

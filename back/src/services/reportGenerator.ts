@@ -1,5 +1,5 @@
 import PDFDocument from 'pdfkit-table';
-import fs from 'fs';
+import { Response } from 'express';
 
 interface Despesas {
   id: number;
@@ -11,43 +11,61 @@ interface Despesas {
 
 class ReportGenerator {
   residenciaId: number;
-  documentOutputName: string;
-  constructor(residenciaId: number, documentOutputName: string) {
+  constructor(residenciaId: number) {
     this.residenciaId = residenciaId;
-    this.documentOutputName = documentOutputName;
   }
 
-  convertItemsToString(data: any): string[][] {
-    return [['a']];
-  }
-}
-
-class DespesasReportGenerator extends ReportGenerator {
-  despesas: Despesas;
-  constructor(
-    residenciaId: number,
-    documentOutputName: string,
-    despesas: Despesas
-  ) {
-    super(residenciaId, documentOutputName);
-    this.despesas = despesas;
+  convertItemsToString(data: any, nesting: number): string[][] {
+    const items = data.map((c: any) =>
+      Object.values(c).map((d: any) => d.toString())
+    );
+    console.log(items);
+    return items;
   }
 
-  async generateReport() {
-    const doc = new PDFDocument({ margin: 30, size: 'A4' });
-    doc.pipe(fs.createWriteStream(`./${this.documentOutputName}.pdf`));
+  getDocumentOutputName() {
+    return `${Date.now()}-${this.residenciaId}`;
+  }
 
-    const table = {
-      title: `RELATORIO DE DESPESAS DA RESIDENCIA ${this.residenciaId}`,
+  table() {
+    return {
+      title: `RELATORIO teste residencia ${this.residenciaId}`,
       subtitle: 'todo o periodo da residencia',
-      headers: ['ID', 'TIPO', 'DESCRICAO', 'VALOR', 'RESIDENCIA'],
-      rows: this.convertItemsToString(this.despesas),
+      headers: ['ID'],
+      rows: [] as string[][],
     };
+  }
+
+  async generateReport(response: Response) {
+    const doc = new PDFDocument({ margin: 30, size: 'A4' });
+
+    const table = this.table();
 
     await doc.table(table, {
       columnsSize: [100, 100, 100, 100, 100],
     });
 
+    doc.pipe(response);
+
     doc.end();
   }
 }
+
+class DespesasReportGenerator extends ReportGenerator {
+  despesas: Despesas[];
+  constructor(residenciaId: number, despesas: Despesas[]) {
+    super(residenciaId);
+    this.despesas = despesas;
+  }
+
+  table() {
+    return {
+      title: `RELATORIO DE DESPESAS DA RESIDENCIA ${this.residenciaId}`,
+      subtitle: 'todo o periodo da residencia',
+      headers: ['ID', 'TIPO', 'DESCRICAO', 'VALOR', 'RESIDENCIA'],
+      rows: this.convertItemsToString(this.despesas, 1),
+    };
+  }
+}
+
+export default DespesasReportGenerator;
