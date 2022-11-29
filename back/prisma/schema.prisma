@@ -6,6 +6,89 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+
+model Comodo {
+  id Int @id @default(autoincrement())
+  tamanho String
+  limpeza String
+  classificacaoMovel String
+  moveis Movel[]
+  residencia  Residencia @relation(fields: [residenciaId], references: [id])
+  residenciaId Int
+
+}
+
+model Despesa {
+  id Int @id @default(autoincrement())
+  tipo String
+  descricao String
+  valor Int
+  residencia Residencia @relation(fields: [residenciaId], references: [id])
+  residenciaId Int
+}
+
+model Estoque {
+  id Int @id @default(autoincrement())
+  produtos Produto[]
+  residencia Residencia @relation(fields: [residenciaId], references: [id])
+  residenciaId Int @unique
+}
+
+model Movel {
+  id Int @id @default(autoincrement())
+  descricao String
+  comodo Comodo @relation(fields: [comodoId], references: [id])
+  comodoId Int
+}
+
+model Pessoa {
+  id Int @id @default(autoincrement())
+  cpf String
+  nome String
+  idade String
+  senha String
+  rendas Renda[]
+  residencias Residencia[]
+  posts Post[]
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+  titulo String
+  mensagem String
+  dataPublicacao DateTime
+  nome String
+  pessoa Pessoa @relation(fields: [pessoaId], references: [id])
+  pessoaId Int
+}
+
+model Produto {
+  id Int @id @default(autoincrement())
+  nome String
+  valor String
+  quantidade Int
+  estoque Estoque @relation(fields: [estoqueId], references: [id])
+  estoqueId Int
+}
+
+model Renda {
+  id Int @id @default(autoincrement())
+  descricao String
+  valor Int
+  pessoa Pessoa @relation(fields: [pessoaId], references: [id])
+  pessoaId Int
+}
+
+model Residencia {
+  id Int @id @default(autoincrement())
+  endereco String
+  comodos Comodo[]
+  despesas Despesa[]
+  pessoa Pessoa @relation(fields: [pessoaId], references: [id])
+  pessoaId Int
+  estoque Estoque?
 }

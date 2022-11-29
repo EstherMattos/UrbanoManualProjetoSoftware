@@ -1,14 +1,19 @@
-import { ResidenciaController } from "../controllers/residencia"
-import express from "express"
+import { ResidenciaController } from '../controllers/residencia';
+import express from 'express';
 
-const residenciaRouter = express.Router()
+const residenciaRouter = express.Router();
 
-residenciaRouter.post("/", ResidenciaController.create)
+residenciaRouter.post('/', ResidenciaController.create);
 
-residenciaRouter.get("/:residencia_id", ResidenciaController.getById)
+residenciaRouter.get('/:residencia_id', ResidenciaController.getById);
 
-residenciaRouter.put("/:residencia_id", ResidenciaController.update)
+residenciaRouter.get(
+  '/:residencia_id/report',
+  ResidenciaController.generateReport
+);
 
-residenciaRouter.delete("/:residencia_id", ResidenciaController.delete)
+residenciaRouter.put('/:residencia_id', ResidenciaController.update);
 
-export default residenciaRouter
+residenciaRouter.delete('/:residencia_id', ResidenciaController.delete);
+
+export default residenciaRouter;
