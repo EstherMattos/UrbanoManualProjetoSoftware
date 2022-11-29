@@ -15,7 +15,7 @@ class ReportGenerator {
     this.residenciaId = residenciaId;
   }
 
-  convertItemsToString(data: any, nesting: number): string[][] {
+  convertItemsToString(data: any): string[][] {
     const items = data.map((c: any) =>
       Object.values(c).map((d: any) => d.toString())
     );
@@ -63,7 +63,7 @@ class DespesasReportGenerator extends ReportGenerator {
       title: `RELATORIO DE DESPESAS DA RESIDENCIA ${this.residenciaId}`,
       subtitle: 'todo o periodo da residencia',
       headers: ['ID', 'TIPO', 'DESCRICAO', 'VALOR', 'RESIDENCIA'],
-      rows: this.convertItemsToString(this.despesas, 1),
+      rows: this.convertItemsToString(this.despesas),
     };
   }
 }
