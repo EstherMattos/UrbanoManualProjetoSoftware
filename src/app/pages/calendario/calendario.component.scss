@@ -1,3 +1,6 @@
+.main-calendario{
+    margin: 2rem;
+}
 .calendario-dias {
     display: grid;
     margin-top: 10px;
@@ -7,6 +10,24 @@
 
 .calendario-dias div {
     border: 1px solid #ccc;
-    font-size: 24px;
-    padding: 20px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.calendario-titulo-mes-ano{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.buttons{
+    display: inline-flex;
+    div button{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        background-color: #536DFE;
+        width: 20%;
+        border: #536DFE;
+    }
 }

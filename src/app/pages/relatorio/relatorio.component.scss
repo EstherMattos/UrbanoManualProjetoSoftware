@@ -1,13 +1,13 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/font";
 
-h1{
-  margin: 2rem 5rem;
-  font-size: 30px;
-}
-h3{
-  margin: 1rem 5rem;
-  font-size: 16px;
-}
-.example-tree{
+.relatorio-main-page{
+  h1{
+    font-size: 30px;
+  }
+  h3{
+    font-size: 16px;
+  }
   margin: 0 5rem;
 
   .example-tree-invisible {
@@ -32,4 +32,47 @@ h3{
   }
 }
 
+#content {
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
 
+#content td, #content th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#content tr:nth-child(even){background-color: blue;}
+
+#content tr:hover {background-color: #ddd;}
+
+#content th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: $dark-grey;
+  color: white;
+}
+.button{
+  padding: 2rem;
+  .download{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    float: right;
+    color: #ffffff;
+    background-color: #536DFE;
+    width: 20%;
+    border: #536DFE;
+    
+  }
+}
