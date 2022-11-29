@@ -19,7 +19,6 @@ class ReportGenerator {
     const items = data.map((c: any) =>
       Object.values(c).map((d: any) => d.toString())
     );
-    console.log(items);
     return items;
   }
 
