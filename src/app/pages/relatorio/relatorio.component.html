@@ -50,8 +50,8 @@
           <tr mat-header-row *matHeaderRowDef="['descricao', 'tipo', 'valor']"></tr>
           <tr mat-row *matRowDef="let row; columns: ['descricao', 'tipo', 'valor'];"></tr>
         </table>
-  </div>     
-</div>
-<div class="button">
-  <button (click)="printPDF()" class="download">Download</button>
+  </div>  
+  <div class="button" id="buttonDownload">
+    <button (click)="printPDF()" class="download">Download</button>
+  </div>   
 </div>

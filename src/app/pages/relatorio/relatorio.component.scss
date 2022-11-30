@@ -5,6 +5,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  #buttonDownload{
+    margin-top: 1rem;
+    padding: 2rem;
+    .download{
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      float: right;
+      color: #ffffff;
+      background-color: #536DFE;
+      border: #2542e7;
+    }
+  }
 }
 .relatorio-main-page{
   h1{
@@ -67,19 +84,5 @@
 //   background-color: $dark-grey;
 //   color: white;
 // }
-// .button{
-//   padding: 2rem;
-//   .download{
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-//     display: flex;
-//     float: right;
-//     color: #ffffff;
-//     background-color: #536DFE;
-//     width: 20%;
-//     border: #536DFE;
-    
-//   }
+
 // }
