@@ -1,53 +1,56 @@
-<div class="relatorio-main-page">
-    <h1>Relatório</h1>
-    <h3>Nessa página você consegue ver o relatório em tempo real de suas modificações no site</h3>
-    <table mat-table [dataSource]="ListaRendas" style="width: 100%;">
-        <ng-container matColumnDef="descricao">
-          <th mat-header-cell *matHeaderCellDef> Renda </th>
-          <td mat-cell *matCellDef="let linha"> {{linha.descricao}} </td>
+<div class="main">
+  <div class="relatorio-main-page" id="content" #content>
+      <h1>Relatório</h1>
+      <h3>Nessa página você consegue ver o relatório em tempo real de suas modificações no site</h3>
+      <table mat-table [dataSource]="DadosUser" style="width: 90%;">
+        <ng-container matColumnDef="nomeUsuario">
+          <th mat-header-cell *matHeaderCellDef> Usuario </th>
+          <td mat-cell *matCellDef="let linha"> {{linha.Usuario.nome}} </td>
         </ng-container>
-        <ng-container matColumnDef="valor">
-          <th mat-header-cell *matHeaderCellDef> Valor </th>
-          <td mat-cell *matCellDef="let linha"> {{linha.valor | currency}} </td>
+        <ng-container matColumnDef="residenciaAtual">
+          <th mat-header-cell *matHeaderCellDef> Residência </th>
+          <td mat-cell *matCellDef="let linha"> {{linha.ResidenciaSelecionada.endereco}}teste </td>
         </ng-container>
-        <tr mat-header-row *matHeaderRowDef="['descricao','valor']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['descricao','valor'];"></tr>
+        <tr mat-header-row *matHeaderRowDef="['nomeUsuario','residenciaAtual']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['nomeUsuario','residenciaAtual'];"></tr>
       </table>
-      <table mat-table [dataSource]="ListaContas" style="width: 100%;">
-        <ng-container matColumnDef="descricao">
-          <th mat-header-cell *matHeaderCellDef> Despesa </th>
-          <td mat-cell *matCellDef="let linha"> {{linha.descricao}} </td>
+      <table mat-table [dataSource]="DadosUser" style="width: 90%;">
+        <ng-container matColumnDef="cpf">
+          <th mat-header-cell *matHeaderCellDef> CPF </th>
+          <td mat-cell *matCellDef="let linha"> {{linha.Usuario.cpf}} </td>
         </ng-container>
-        <ng-container matColumnDef="tipo">
-            <th mat-header-cell *matHeaderCellDef> Tipo </th>
-            <td mat-cell *matCellDef="let linha"> {{linha.tipo}} </td>
+        <tr mat-header-row *matHeaderRowDef="['cpf']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['cpf'];"></tr>
+      </table>
+      <table mat-table [dataSource]="ListaRendas" style="width: 90%;">
+          <ng-container matColumnDef="descricao">
+            <th mat-header-cell *matHeaderCellDef> Renda </th>
+            <td mat-cell *matCellDef="let linha"> {{linha.descricao}} </td>
           </ng-container>
-        <ng-container matColumnDef="valor">
-          <th mat-header-cell *matHeaderCellDef> Valor </th>
-          <td mat-cell *matCellDef="let linha"> {{linha.valor | currency}} </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="['descricao', 'tipo', 'valor']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['descricao', 'tipo', 'valor'];"></tr>
-      </table>
-      
-</div>
-<div id="content" #content>
-  <table>
-    <thead>
-      <tr>
-        <th>Exemplo</th>
-        <th>Exemplo</th>
-        <th>Exemplo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Exemplo</td>
-        <td>Exemplo</td>
-        <td>Exemplo</td>
-      </tr>
-    </tbody>
-  </table>
+          <ng-container matColumnDef="valor">
+            <th mat-header-cell *matHeaderCellDef> Valor </th>
+            <td mat-cell *matCellDef="let linha"> {{linha.valor | currency}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="['descricao','valor']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['descricao','valor'];"></tr>
+        </table>
+        <table mat-table [dataSource]="ListaContas" style="width: 90%;">
+          <ng-container matColumnDef="descricao">
+            <th mat-header-cell *matHeaderCellDef> Despesa </th>
+            <td mat-cell *matCellDef="let linha"> {{linha.descricao}} </td>
+          </ng-container>
+          <ng-container matColumnDef="tipo">
+              <th mat-header-cell *matHeaderCellDef> Tipo </th>
+              <td mat-cell *matCellDef="let linha"> {{linha.tipo}} </td>
+            </ng-container>
+          <ng-container matColumnDef="valor">
+            <th mat-header-cell *matHeaderCellDef> Valor </th>
+            <td mat-cell *matCellDef="let linha"> {{linha.valor | currency}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="['descricao', 'tipo', 'valor']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['descricao', 'tipo', 'valor'];"></tr>
+        </table>
+  </div>     
 </div>
 <div class="button">
   <button (click)="printPDF()" class="download">Download</button>

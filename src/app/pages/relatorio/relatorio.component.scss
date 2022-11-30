@@ -1,15 +1,19 @@
 @import "src/app/styles/variables";
 @import "src/app/styles/font";
-
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .relatorio-main-page{
   h1{
-    font-size: 30px;
+    font-size: 24px;
   }
   h3{
     font-size: 16px;
   }
-  margin: 0 5rem;
-
+  margin: 0 1rem;
   .example-tree-invisible {
     display: none;
   }
@@ -18,6 +22,7 @@
     margin-top: 0;
     margin-bottom: 0;
     list-style-type: none;
+    align-items: center;
   }
 
   mat-nested-tree-node div[role=group] {
@@ -32,47 +37,49 @@
   }
 }
 
-#content {
-  position: relative;
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 3rem;
-}
 
-#content td, #content th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
 
-#content tr:nth-child(even){background-color: blue;}
+// #content {
+//   position: relative;
+//   font-family: Arial, Helvetica, sans-serif;
+//   border-collapse: collapse;
+//   width: 100%;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   margin-bottom: 3rem;
+// }
 
-#content tr:hover {background-color: #ddd;}
+// #content td, #content th {
+//   border: 1px solid #ddd;
+//   padding: 8px;
+// }
 
-#content th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: $dark-grey;
-  color: white;
-}
-.button{
-  padding: 2rem;
-  .download{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    float: right;
-    color: #ffffff;
-    background-color: #536DFE;
-    width: 20%;
-    border: #536DFE;
+// #content tr:nth-child(even){background-color: blue;}
+
+// #content tr:hover {background-color: #ddd;}
+
+// #content th {
+//   padding-top: 12px;
+//   padding-bottom: 12px;
+//   text-align: left;
+//   background-color: $dark-grey;
+//   color: white;
+// }
+// .button{
+//   padding: 2rem;
+//   .download{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
+//     display: flex;
+//     float: right;
+//     color: #ffffff;
+//     background-color: #536DFE;
+//     width: 20%;
+//     border: #536DFE;
     
-  }
-}
+//   }
+// }
