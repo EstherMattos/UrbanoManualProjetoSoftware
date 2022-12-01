@@ -7,7 +7,6 @@ Para satisfazer o RNF3, a arquitetura em camadas também mostra alguns benefíci
 e tratar da segurança a nível de lógica na camada de lógica, deixando assim a camada cliente, que vai ser uma camada fina, menos propensa a vulnerabilidades
 Pensando na fase de desenvolvimento do projeto, a arquitetura em camadas, com cada camada isolada, favorece a velocidade e produtividade do time por estarem trabalhando em projetos separados.
 
-
 //////////
 Arquitetura Publish Subscribe
 //////////
