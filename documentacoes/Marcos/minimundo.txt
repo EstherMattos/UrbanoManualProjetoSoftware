@@ -1,0 +1,12 @@
+Após identificar as personas, identificamos o mini mundo a ser modelado, que posteriormente será utilizado para definição de requisitos funcionais do sistema.
+Uma pessoa compra ou aluga uma casa para morar sozinha. Se depara com diversas questões inerentes à manutenção da mesma.
+O software permite quem está morando sozinho gerenciar aspectos importantes da sua residência
+Uma casa tem diversos cômodos, com diversas necessidades de manutenção e móveis
+Uma pessoa que mora numa casa consome mantimentos e produtos
+Uma pessoa que mora numa casa faz manutenção nos cômodos e nos móveis, e comprar mantimentos para seu sustento
+A manutenção de uma residência implica em gastos financeiros
+A pessoa que mora sozinha tem que controlar e gerenciar suas rendas e suas despesas.
+A pessoa tem que ter um relatório de despesas para controle financeiro
+A pessoa tem que conhecer os cômodos da casa e os aspectos de limpeza que cada um possui
+A pessoa tem que saber as necessidades de manutenção de cada cômodo e deve saber quando realizá-los
+A pessoa tem que saber o estoque de mantimentos e manter atualizado para não ficar sem produtos de limpeza e alimentação

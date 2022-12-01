@@ -1,0 +1,30 @@
+//////////
+Arquitetura em 3 camadas
+//////////
+Desta forma, conseguimos isolar a camada de lógica de negócio para servir aos diferentes clientes, como requisitado pelo requisito não funcional RNF1 e RNF2.
+Dessa forma, também não podemos usar a arquitetura MVC, pois a manutenção da capacidade de responder a diversas plataformas ia ser bastante complexa e propensa a se deteriorar
+Para satisfazer o RNF3, a arquitetura em camadas também mostra alguns benefícios, visto que com a camada de banco de dados isolada, conseguimos melhorar a segurança desta sozinha e
+e tratar da segurança a nível de lógica na camada de lógica, deixando assim a camada cliente, que vai ser uma camada fina, menos propensa a vulnerabilidades
+Pensando na fase de desenvolvimento do projeto, a arquitetura em camadas, com cada camada isolada, favorece a velocidade e produtividade do time por estarem trabalhando em projetos separados.
+
+
+//////////
+Arquitetura Publish Subscribe
+//////////
+Esse padrão vai ser utilizado para resolver o RNF4, onde ele não pode fazer uma requisição para a camada de back-end pedindo o relatório e ficar esperando ( as vezes por muito tempo )
+até que fique pronto. Desta forma, é gerado um evento que será consumido pelo servidor para gerar o relatório assincronamente, desacoplando assim o espaço e o tempo.
+Em caso de erro na geração do relatório esse padrão também é interessante, pois o evento vai ficar sendo disparado após intervalos de tempo até que seja consumido pelo servidor,
+desta forma não “perdendo” a requisição do usuário em alguma eventual falha 
+
+/////////
+Arquitetura Orientada a mensagens
+/////////
+Esse padrão vai ser utilizado para resolver o RNF5, onde o usuário precisa consumir mensagens não lidas de uma fila de mensagens, mesmo que ele entre apos o evento de geração da notificação,
+então quando a mensagem for gerada, será inserida numa fila que deve ser consumida pelo cliente ao entrar no app novamente 
+Esse padrão garante resiliência em caso da requisição de busca de notificação, pois as mensagens vão estar persistidas na fila
+
+
+/////////
+Para atender ao RNF7, foi adicionado uma camada de load balancer e redundancia de servidores de processamento de logica de dados, desta forma, mesmo que o volume de dados esteja cresça muito, o volume é distribuido ao longo dos servidores
+Problema de consistencia nao foi avaliado como critico pois dois usuarios distintos vao sempre acessar registros diferentes de banco de dados, este que nao tem redundancia
+////////
