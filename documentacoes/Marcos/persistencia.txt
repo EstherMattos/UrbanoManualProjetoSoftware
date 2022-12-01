@@ -1,4 +1,0 @@
-O mecanismo de persistência escolhido é o PRISMA ORM, que é bastante conhecido na comunidade NODE.JS,
-e tem bastante recursos para trabalhar com bancos relacionais conhecidos como POSTGRESQL, MYSQL,
-entre outros. O mapeamento dos modelos e a conexão com o banco de dados serão implementados na camada de back-end onde fica a lógica e os modelos
-Ele também se integra bem com o express, framework escolhido para fornecer as rotas onde os clientes podem acessar os controladores do back-end
